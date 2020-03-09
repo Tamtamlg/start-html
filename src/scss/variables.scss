@@ -1,0 +1,28 @@
+// fonts
+$font: 'Open Sans', sans-serif;
+$root-font-size: 16;
+
+// grid
+$col-count: 12 !default;
+$grid-gutter: 30px !default;
+$container-xl-width: 1170px !default;
+$container-lg-width: 960px !default;
+$container-md-width: 720px !default;
+$container-sm-width: 540px !default;
+$xs: 425px !default;
+$sm: 576px !default;
+$md: 769px !default;
+$lg: 992px !default;
+$xl: 1200px !default;
+
+// colors
+$placeholder-color: #363946;
+$gold: #84764D;
+$white: #fff;
+$white-dark: #F1F1F1;
+$black: #363946;
+$gray: #888888;
+$gray-light: #F4F4F5;
+$gray-dark: #EDEEF0;
+$blue: #283478;
+$error: #db3232;

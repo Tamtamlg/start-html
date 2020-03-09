@@ -1,0 +1,9 @@
+<!-- lazy-img -->
+<picture class="lazy-img">
+  <source class="lazy" srcset="@@desktop2xWebp 2x, @@desktopWebp 1x" type="image/webp" media="(min-width: 768px)" />
+  <source class="lazy" srcset="@@desktop2x 2x, @@desktop 1x" media="(min-width: 768px)" />
+  <source class="lazy" srcset="@@mobile2xWebp 2x, @@mobileWebp 1x" type="image/webp" />
+  <source class="lazy" srcset="@@mobile2x 2x, @@mobile 1x" />
+  <img class="lazy"  src="@@desktop" srcset="@@desktop2x 2x" alt="@@alt" />
+</picture>
+<!-- /lazy-img -->
