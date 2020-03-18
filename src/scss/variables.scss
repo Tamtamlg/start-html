@@ -1,28 +1,28 @@
 // fonts
 $font: 'Open Sans', sans-serif;
 $root-font-size: 16;
+$h1-font-size: $root-font-size * 2.5 !default;
+$h2-font-size: $root-font-size * 2 !default;
+$h3-font-size: $root-font-size * 1.75 !default;
+$h4-font-size: $root-font-size * 1.5 !default;
+$h5-font-size: $root-font-size * 1.25 !default;
+$h6-font-size: $root-font-size !default;
 
 // grid
 $col-count: 12 !default;
 $grid-gutter: 30px !default;
-$container-xl-width: 1170px !default;
-$container-lg-width: 960px !default;
-$container-md-width: 720px !default;
-$container-sm-width: 540px !default;
-$xs: 425px !default;
+$container-xl: 1170px !default;
+$container-lg: 960px !default;
+$container-md: 720px !default;
+$container-sm: 540px !default;
+$xs: 0 !default;
 $sm: 576px !default;
-$md: 769px !default;
+$md: 768px !default;
 $lg: 992px !default;
 $xl: 1200px !default;
 
 // colors
 $placeholder-color: #363946;
-$gold: #84764D;
 $white: #fff;
-$white-dark: #F1F1F1;
 $black: #363946;
-$gray: #888888;
-$gray-light: #F4F4F5;
-$gray-dark: #EDEEF0;
-$blue: #283478;
 $error: #db3232;

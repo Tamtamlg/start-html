@@ -3,21 +3,31 @@
 <main>
   <!-- Перед началом работы удалите эту страницу -->
   <div class="container">
+    <!-- lazy-img demo -->
     <div class="row">
       <div class="col">
-        <!-- lazy-img -->
         @@include('blocks/lazy-img/lazy-img.html', {
           "alt": "Сервисные центры",
           "desktop": "img/puh.jpg",
           "desktop2x": "img/puh.jpg",
-          "desktopWebp": "img/puh.jpg",
-          "desktop2xWebp": "img/puh.jpg",
+          "desktopWebp": "img/puh.webp",
+          "desktop2xWebp": "img/puh.webp",
           "mobile": "img/puh.jpg",
           "mobile2x": "img/puh.jpg",
-          "mobileWebp": "img/puh.jpg",
-          "mobile2xWebp": "img/puh.jpg"
+          "mobileWebp": "img/puh.webp",
+          "mobile2xWebp": "img/puh.webp"
         })
-        <!-- /lazy-img -->
+      </div>
+    </div>
+    <!-- svg-icon demo -->
+    <div class="row">
+      <div class="col">
+        @@include('blocks/svg-icon/svg-icon.html', {
+          "name": "chevron-down",
+          "class": "chevron",
+          "width": "24px",
+          "height": "24px"
+        })
       </div>
     </div>
     

@@ -13,13 +13,11 @@ const sass = require('gulp-sass');
 const sourcemaps = require('gulp-sourcemaps');
 const postcss = require('gulp-postcss');
 const autoprefixer = require('autoprefixer');
-const mqpacker = require('css-mqpacker');
 const objectFitImages = require('postcss-object-fit-images');
 const del = require('del');
 const browserSync = require('browser-sync').create();
 const imagemin = require('gulp-imagemin');
 const pngquant = require('imagemin-pngquant');
-const uglify = require('gulp-uglify');
 const concat = require('gulp-concat');
 const cheerio = require('gulp-cheerio');
 const svgstore = require('gulp-svgstore');
@@ -38,9 +36,6 @@ const critical = require('critical').stream;
 let postCssPlugins = [
   autoprefixer({                                           // автопрефиксер
     browsers: ['last 2 version']
-  }),
-  mqpacker({                                               // объединение медиавыражений с последующей их сортировкой
-    sort: true
   }),
   objectFitImages(),                                       // возможность применять object-fit
 ];
@@ -81,7 +76,7 @@ gulp.task('style', function () {
     .pipe(browserSync.stream({match: '**/*.css'}))         // укажем browserSync необходимость обновить страницы в браузере
     .pipe(rename('style.min.css'))                         // переименовываем (сейчас запишем рядом то же самое, но минимизированное)
     .pipe(cleanCSS())                                      // сжимаем и оптимизируем
-    .pipe(gulp.dest(dirs.build + '/css/'))                // записываем CSS-файл
+    .pipe(gulp.dest(dirs.build + '/css/'))                 // записываем CSS-файл
 });
 
 // Обработка HTML
@@ -207,7 +202,6 @@ gulp.task('js', function (callback) {
     return gulp.src(jsList)
       .pipe(plumber({ errorHandler: onError }))             // не останавливаем автоматику при ошибках
       .pipe(concat('vendor.min.js'))                        // конкатенируем все файлы в один с указанным именем
-      // .pipe(uglify())
       .pipe(gulp.dest(dirs.build + '/js'));                 // записываем
   }
   else {

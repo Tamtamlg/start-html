@@ -44,40 +44,44 @@
 ## Назначение папок
 
 ```bash
-dist/                                           # Папка сборки, здесь работает сервер автообновлений.
-src/                                            # Исходные файлы.
-  blocks/                                       # - блоки проекта.
-  blocks/scripts/scripts.html                   # - файл для подключения скриптов.
-  css/                                          # - файлы css, которые не нужно компилировать.
-  favicon/                                      # - фавиконки.
-  fonts/                                        # - шрифты проекта.
-  img/                                          # - картинки.
-  js/                                           # - js-файлы.
-  js/vendor                                     # - js-файлы, которые не подключаются через npm
-  scss/                                         # - стили scss.
-  svg/                                          # - файлы для svg-спрайта.
-  index.html                                    # - главная страница проекта.
+dist/                             # Папка сборки, здесь работает сервер автообновлений.
+src/                              # Исходные файлы.
+  blocks/                         # - блоки проекта.
+  blocks/scripts/scripts.html     # - файл для подключения скриптов.
+  css/                            # - файлы css, которые не нужно компилировать.
+  favicon/                        # - фавиконки.
+  fonts/                          # - шрифты проекта.
+  img/                            # - картинки.
+  js/                             # - js-файлы.
+  js/vendor                       # - js-файлы, которые не подключаются через npm
+  scss/                           # - стили scss.
+  svg/                            # - файлы для svg-спрайта.
+  index.html                      # - главная страница проекта.
 ```
 
 
 ## Разметка
 
 HTML обрабатывается "gulp-file-include".
-Блок вставляется в разметку так: `@@include('blocks/header/header.html')`, можно использовать json для передачи параметров ` @@include('slider__item/slider__item.html', {"img": "img/slider-2.jpg", "alt": "Some text"})`. Параметры из json вставляются так: `<img src="@@img" alt="@@alt">`
+Блок вставляется в разметку так: `@@include('blocks/header/header.html')`, 
+можно использовать json для передачи параметров `@@include('slider__item/slider__item.html', {"img": "img/slider-2.jpg", "alt": "Some text"})`. 
+Параметры из json вставляются в html так: `<img src="@@img" alt="@@alt">`
 
 
 
 ## Стили
 
 Используется SCSS.
-`src/scss/style.scss` - Файл-диспетчер подключений стилей (содержит только импорты).
-`src/scss/reboot` - Сброс стилей.
-`src/scss/mixins.scss` - Миксины.
-`src/scss/functions.scss` - Функции.
-`src/scss/grid` - Сетка.
-`src/scss/base.scss` - Базовые глобальные стили.
-`src/scss/variables.scss` - Переменные.
-`src/scss/fonts.scss` - Шрифты.
+```bash
+src/scss/style.scss               # Файл-диспетчер подключений стилей (содержит только импорты).
+src/scss/reboot                   # Сброс стилей.
+src/scss/mixins.scss              # Миксины.
+src/scss/functions.scss           # Функции.
+src/scss/grid                     # Сетка.
+src/scss/base.scss                # Базовые глобальные стили.
+src/scss/variables.scss           # Переменные.
+src/scss/fonts.scss               # Шрифты.
+```
 
 
 
@@ -88,17 +92,17 @@ HTML обрабатывается "gulp-file-include".
 Реализован `lazy loading` при помощи `IntersectionObserver`. Изображения будут лениво подгружаться, если им присвоен класс `.lazy` и указаны атрибуты `data-src` и `data-srcset`.
 Пример использования:
 ```bash
-@@include('blocks/lazy-img/lazy-img.html', {
-          "alt": "Lazy loading",
-          "desktop": "img/test.jpg",
-          "desktop2x": "img/test@2x.jpg",
-          "desktopWebp": "img/test.webp",
-          "desktop2xWebp": "img/test@2x.webp",
-          "mobile": "img/test-mobile.jpg",
-          "mobile2x": "img/test-mobile.jpg",
-          "mobileWebp": "img/test-mobile.webp",
-          "mobile2xWebp": "img/test-mobile.webp"
-        })
+  @@include('blocks/lazy-img/lazy-img.html', {
+    "alt": "Lazy loading",
+    "desktop": "img/test.jpg",
+    "desktop2x": "img/test@2x.jpg",
+    "desktopWebp": "img/test.webp",
+    "desktop2xWebp": "img/test@2x.webp",
+    "mobile": "img/test-mobile.jpg",
+    "mobile2x": "img/test-mobile.jpg",
+    "mobileWebp": "img/test-mobile.webp",
+    "mobile2xWebp": "img/test-mobile.webp"
+  })
 ```
 Для ленивой загрузки background-image необходимо к блоку добавить класс `.lazy-bg` и такие стили:
 ```bash
@@ -115,11 +119,14 @@ HTML обрабатывается "gulp-file-include".
 В спрайт попадают все .svg из папки `src/svg/`
 Пример использования:
 ```bash
-  <svg class="svg" width="100px" height="30px">
-    <use xlink:href="img/sprite.svg#logo"></use>
-  </svg>
+  @@include('blocks/svg-icon/svg-icon.html', {
+    "name": "chevron-down",
+    "class": "chevron",
+    "width": "24px",
+    "height": "24px"
+  })
 ```
-где `logo` - название файла, который хотим получить из спрайта
+где `name` - название файла, который хотим получить из спрайта
 
 
 ## Модульная сетка
@@ -134,10 +141,10 @@ HTML обрабатывается "gulp-file-include".
 Содержимое блока:
 
 ```bash
-demo-block/               # Папка блока.
-  demo-block.html         # Разметка.
-  demo-block.scss         # Стилевой файл блока.
-  img                     # Папка с картинками для этого блока.
+demo-block/                       # Папка блока.
+  demo-block.html                 # Разметка.
+  demo-block.scss                 # Стилевой файл блока.
+  img                             # Папка с картинками для этого блока.
 ```
 
 
@@ -145,8 +152,3 @@ demo-block/               # Папка блока.
 
 Добавление нового блока: в консоли `node block.js ИМЯ-БЛОКА`. Будут созданы папка блока, .scss и .html файлы, а также папка img, добавлен импорт стилей.
 Важно: каждый блок должен содержать только 1 корневой элемент.
-
-
-
-##
-Создано на основе [проекта](https://github.com/nicothin/NTH-start-project)

@@ -8,19 +8,19 @@
   padding-left: $grid-gutter / 2;
 
   @include breakpoint-min($sm) {
-    max-width: $container-sm-width;
+    max-width: $container-sm;
   }
 
   @include breakpoint-min($md) {
-    max-width: $container-md-width;
+    max-width: $container-md;
   }
 
   @include breakpoint-min($lg) {
-    max-width: $container-lg-width;
+    max-width: $container-lg;
   }
 
   @include breakpoint-min($xl) {
-    max-width: $container-xl-width;
+    max-width: $container-xl;
   }
 }
 
