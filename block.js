@@ -13,29 +13,34 @@ let styleManagerPath = './src/scss/style.scss';
 // Если есть имя блока
 if(blockName) {
 
-  let dirPath = './src/blocks/' + blockName + '/'; // полный путь к создаваемой папке блока
+  let dirPath = `./src/blocks/${blockName}/`; // полный путь к создаваемой папке блока
   mkdirp(dirPath, function(err){                   // создаем
 
     // Если какая-то ошибка — покажем
     if(err) {
-      console.error('Отмена операции: ' + err);
+      console.error(`Отмена операции: ${err}`);
     }
 
     // Нет ошибки, поехали!
     else {
-      console.log('Создание папки ' + dirPath + ' (создана, если ещё не существует)');
+      console.log(`Создание папки ${dirPath} (создана, если ещё не существует)`);
 
       // Обходим массив расширений и создаем файлы, если они еще не созданы
       extensions.forEach(function(extention){
 
-        let filePath = dirPath + blockName + '.' + extention; // полный путь к создаваемому файлу
+        let filePath;                                         // полный путь к создаваемому файлу
+        if (extention === 'scss') {
+          filePath = `${dirPath}_${blockName}.${extention}`;
+        } else {
+          filePath = `${dirPath}${blockName}.${extention}`;
+        }
         let fileContent = '';                                 // будущий контент файла
         let fileCreateMsg = '';                               // будущее сообщение в консоли при создании файла
 
         // Если это scss
         if (extention === 'scss') {
           fileContent = `.${blockName} {\n  \n}\n`;
-          let styleFileImport = '@import \'' + dirPath + blockName + '.scss\';';
+          let styleFileImport = `@import '${dirPath}_${blockName}.scss';`;
 
           // Читаем файл диспетчера подключений
           let connectManager = fs.readFileSync(styleManagerPath, 'utf8');
@@ -111,9 +116,9 @@ if(blockName) {
         if(fileExist(filePath) === false && extention !== 'img') {
           fs.writeFile(filePath, fileContent, function(err) {
             if(err) {
-              return console.log('Файл НЕ создан: ' + err);
+              return console.log(`Файл НЕ создан: ${err}`);
             }
-            console.log('Файл создан: ' + filePath);
+            console.log(`Файл создан: ${filePath}`);
             if(fileCreateMsg) {
               console.warn(fileCreateMsg);
             }
