@@ -82,14 +82,14 @@ HTML обрабатывается "gulp-file-include".
 
 Используется SCSS.
 ```bash
-src/scss/style.scss               # Файл-диспетчер подключений стилей (содержит только импорты).
-src/scss/reboot.scss              # Сброс стилей.
-src/scss/mixins.scss              # Миксины.
-src/scss/functions.scss           # Функции.
-src/scss/grid.scss                # Сетка.
-src/scss/base.scss                # Базовые глобальные стили.
-src/scss/variables.scss           # Переменные.
-src/scss/fonts.scss               # Шрифты.
+src/scss/style.scss                # Файл-диспетчер подключений стилей (содержит только импорты).
+src/scss/_reboot.scss              # Сброс стилей.
+src/scss/_mixins.scss              # Миксины.
+src/scss/_functions.scss           # Функции.
+src/scss/_grid.scss                # Сетка.
+src/scss/_base.scss                # Базовые глобальные стили.
+src/scss/_variables.scss           # Переменные.
+src/scss/_fonts.scss               # Шрифты.
 ```
 
 
