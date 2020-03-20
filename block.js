@@ -34,7 +34,6 @@ if(blockName) {
           filePath = `${dirPath}${blockName}.${extention}`;
         }
         let fileContent = '';                                 // будущий контент файла
-        let fileCreateMsg = '';                               // будущее сообщение в консоли при создании файла
 
         // Если это scss
         if (extention === 'scss') {
@@ -94,17 +93,7 @@ if(blockName) {
         }
 
         // Создаем файл, если он еще не существует
-        if(fileExist(filePath) === false) {
-          fs.writeFile(filePath, fileContent, (err) => {
-            if(err) {
-              return console.log(`Файл НЕ создан: ${err}`);
-            }
-            console.log(`Файл создан: ${filePath}`);
-            if(fileCreateMsg) {
-              console.warn(fileCreateMsg);
-            }
-          });
-        }
+        createFile(filePath, fileContent)
       });
     }
   });
@@ -121,5 +110,17 @@ function fileExist(path) {
     fs.statSync(path);
   } catch(err) {
     return !(err && err.code === 'ENOENT');
+  }
+}
+
+// Создание файла
+function createFile(path, content) {
+  if(fileExist(path) === false) {
+    fs.writeFile(path, content, (err) => {
+      if(err) {
+        return console.log(`Файл НЕ создан: ${err}`);
+      }
+      console.log(`Файл создан: ${path}`);
+    });
   }
 }
