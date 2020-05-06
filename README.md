@@ -67,15 +67,15 @@ src/                              # Исходные файлы.
 
 HTML обрабатывается "gulp-file-include".
 Блок вставляется в разметку так: 
-```bash
+```html
 @@include('blocks/header/header.html')
 ``` 
 Можно использовать json для передачи параметров:
-```bash
+```html
 @@include('slider__item/slider__item.html', {"img": "img/slider-2.jpg", "alt": "Some text"})
 ```
 Параметры из json вставляются в html так: 
-```bash
+```html
 <img src="@@img" alt="@@alt">
 ```
 
@@ -93,6 +93,7 @@ src/scss/_grid.scss                # Сетка.
 src/scss/_base.scss                # Базовые глобальные стили.
 src/scss/_variables.scss           # Переменные.
 src/scss/_fonts.scss               # Шрифты.
+src/scss/_typo.scss                # Типографика.
 ```
 
 
@@ -103,7 +104,7 @@ src/scss/_fonts.scss               # Шрифты.
 Если для разных разрешений экрана используются разные изображения, то подключаем их через элемент `<picture>`, а НЕ используем `display: none;`.
 Реализован `lazy loading` при помощи `IntersectionObserver`. Изображения будут лениво подгружаться, если им присвоен класс `.lazy` и указаны атрибуты `data-src` и `data-srcset`.
 Пример использования:
-```bash
+```html
   @@include('blocks/lazy-img/lazy-img.html', {
     "alt": "Lazy loading",
     "desktop": "img/test.jpg",
@@ -111,13 +112,13 @@ src/scss/_fonts.scss               # Шрифты.
     "desktopWebp": "img/test.webp",
     "desktop2xWebp": "img/test@2x.webp",
     "mobile": "img/test-mobile.jpg",
-    "mobile2x": "img/test-mobile.jpg",
+    "mobile2x": "img/test-mobile@2x.jpg",
     "mobileWebp": "img/test-mobile.webp",
     "mobile2xWebp": "img/test-mobile.webp"
   })
 ```
 Для ленивой загрузки background-image необходимо к блоку добавить класс `.lazy-bg` и такие стили:
-```bash
+```scss
 .demo-block {
   &.lazy-bg--loaded {
     background: url('../img/background.png');
@@ -130,7 +131,7 @@ src/scss/_fonts.scss               # Шрифты.
 Используется SVG-спрайт.
 В спрайт попадают все .svg из папки `src/svg/`
 Пример использования:
-```bash
+```html
   @@include('blocks/svg-icon/svg-icon.html', {
     "name": "chevron-down",
     "class": "chevron",
@@ -165,5 +166,5 @@ demo-block/                       # Папка блока.
 ```bash
 node block.js ИМЯ-БЛОКА
 ```
-Будут созданы папка блока, .scss и .html файлы, добавлен импорт стилей.
-ВАЖНО: каждый блок должен содержать только 1 корневой элемент.
+Будут созданы папка блока, `.scss` и `.html` файлы, добавлен импорт стилей.
+**ВАЖНО**: каждый блок должен содержать только 1 корневой элемент.
