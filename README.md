@@ -1,3 +1,6 @@
+[![MIT Licensed][icon-mit]][license]
+
+
 # Стартовый проект для верстки
 
 <table>
