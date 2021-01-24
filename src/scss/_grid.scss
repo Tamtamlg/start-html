@@ -48,14 +48,14 @@
   margin-right: 0;
   margin-left: 0;
 
-  &>.col,
-  &>[class*="col-"] {
+  & > .col,
+  & > [class*="col-"] {
     padding-right: 0;
     padding-left: 0;
   }
 }
 
-[class^=col-] {
+@mixin col {
   position: relative;
   width: 100%;
   padding-left: $grid-gutter / 2;
@@ -77,6 +77,7 @@
 
 @for $i from 1 through $col-count {
   .col-#{$i} {
+    @include col;
     flex: 0 0 ($i / $col-count) * 100%;
     max-width: ($i / $col-count) * 100%;
   }
@@ -90,6 +91,7 @@
 
 @for $i from 1 through $col-count {
   .col-xs-#{$i} {
+    @include col;
     flex: 0 0 ($i / $col-count) * 100%;
     max-width: ($i / $col-count) * 100%;
   }
@@ -101,14 +103,17 @@
   }
 }
 
-@include breakpoint-min($sm) {
-  @for $i from 1 through $col-count {
-    .col-sm-#{$i} {
+@for $i from 1 through $col-count {
+  .col-sm-#{$i} {
+    @include col;
+    @include breakpoint-min($sm) {
       flex: 0 0 ($i / $col-count) * 100%;
       max-width: ($i / $col-count) * 100%;
     }
   }
+}
 
+@include breakpoint-min($sm) {
   @for $i from 1 through $col-count {
     .offset-sm-#{$i} {
       margin-left: ($i / $col-count) * 100%;
@@ -116,14 +121,17 @@
   }
 }
 
-@include breakpoint-min($md) {
-  @for $i from 1 through $col-count {
-    .col-md-#{$i} {
+@for $i from 1 through $col-count {
+  .col-md-#{$i} {
+    @include col;
+    @include breakpoint-min($md) {
       flex: 0 0 ($i / $col-count) * 100%;
       max-width: ($i / $col-count) * 100%;
     }
   }
+}
 
+@include breakpoint-min($md) {
   @for $i from 1 through $col-count {
     .offset-md-#{$i} {
       margin-left: ($i / $col-count) * 100%;
@@ -131,14 +139,17 @@
   }
 }
 
-@include breakpoint-min($lg) {
-  @for $i from 1 through $col-count {
-    .col-lg-#{$i} {
+@for $i from 1 through $col-count {
+  .col-lg-#{$i} {
+    @include col;
+    @include breakpoint-min($lg) {
       flex: 0 0 ($i / $col-count) * 100%;
       max-width: ($i / $col-count) * 100%;
     }
   }
+}
 
+@include breakpoint-min($lg) {
   @for $i from 1 through $col-count {
     .offset-lg-#{$i} {
       margin-left: ($i / $col-count) * 100%;
@@ -146,14 +157,17 @@
   }
 }
 
-@include breakpoint-min($xl) {
-  @for $i from 1 through $col-count {
-    .col-xl-#{$i} {
+@for $i from 1 through $col-count {
+  .col-xl-#{$i} {
+    @include col;
+    @include breakpoint-min($xl) {
       flex: 0 0 ($i / $col-count) * 100%;
       max-width: ($i / $col-count) * 100%;
     }
   }
+}
 
+@include breakpoint-min($xl) {
   @for $i from 1 through $col-count {
     .offset-xl-#{$i} {
       margin-left: ($i / $col-count) * 100%;
